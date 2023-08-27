@@ -1,0 +1,21 @@
+.container {
+  background-image: url('/images/illustrations/3. HALAMAN REGISTRASI_.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  .box {
+    overflow: scroll;
+    padding: 0 20px 15px;
+    background-color: rgba(0,0,0,0.6);
+  }
+
+  & label {
+    color: $white-color;
+  }
+
+  & input {
+    color: $white-color;
+    border: 1px solid $white-color !important;
+  }
+}

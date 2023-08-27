@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+  background-color: $white-color;
+  margin-bottom: 24px;
+  height: $header-height;
+
+  .subtitle {
+    font-weight: 200 !important;
+    color: $secondary-color;
+  }
+}

@@ -1,0 +1,14 @@
+.container {
+  background-image: url('/images/illustrations/1. HALAMAN AWAL_.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 20px 0;
+
+  button {
+    background-color: $primary-color;
+    color: $white-color;
+    border-radius: $border-radius;
+    width: 120px;
+  }
+}

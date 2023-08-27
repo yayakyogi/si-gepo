@@ -1,0 +1,7 @@
+{
+  "name": "nimo-v2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

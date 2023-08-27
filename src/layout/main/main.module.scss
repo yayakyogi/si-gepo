@@ -1,0 +1,34 @@
+.container {
+  max-width: $container-width;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    margin-bottom: 24px;
+    position: fixed;
+    max-width: $container-width;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .content {
+    height: 100vh;
+    width: 100%;
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .with-header {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: $header-height;
+    overflow: auto;
+    margin-bottom: $navbar-height;
+  }
+}
