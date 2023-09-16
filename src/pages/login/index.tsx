@@ -11,11 +11,11 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import Title from '@components/ui/title/title.component';
+import { useToast } from '@hooks/useToast';
+import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { IconEye, IconEyeOff } from '@tabler/icons-react';
-import { useToast } from '@hooks/useToast';
-import Title from '@components/ui/title/title.component';
 import { useNavigate } from 'react-router-dom';
 
 import style from './style.module.scss';
@@ -44,16 +44,24 @@ const LoginPage: React.FC = () => {
 
     setIsLoading(true);
 
-    setTimeout(() => {
-      if (username === 'sigepo' && password === 'sigepo123') {
-        navigate('/homepage');
-        toast.success('Selamat Menikmati Permainan');
-      } else {
-        toast.error('Username atau Password salah');
-      }
+    fetch(`${import.meta.env.VITE_REST_URL}/user/login`, { method: 'POST', body: JSON.stringify({ username, password }) })
+      .then((val) => val.json())
+      .then((res) => {
+        const { data, success } = res;
 
-      setIsLoading(false);
-    }, 1000);
+        if (success) {
+          toast.success(`Selamat Menikmati Permainan ${data.name}`);
+          navigate('/homepage');
+        } else {
+          toast.error(`Error: ${data.message}`);
+        }
+
+        setIsLoading(false);
+      })
+      .catch((error: any) => {
+        toast.error(`Error: ${error.message}`);
+        setIsLoading(false);
+      });
   };
 
   return (

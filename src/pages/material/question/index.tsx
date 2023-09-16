@@ -5,8 +5,10 @@ import Quiz from 'react-quiz-component';
 import ModalQuestionsCopleted from '@components/modal/questions-completed/questions-completed.component';
 import { materialQuiz1, materialQuiz2 } from '@resources/questions';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAtom } from 'jotai';
 
 import ButtonBack from '@components/ui/button-back/button-back.component';
+import { material } from '@state/atom';
 import style from './style.module.scss';
 
 const MaterialQuestionsPage: React.FC = () => {
@@ -15,8 +17,19 @@ const MaterialQuestionsPage: React.FC = () => {
   const [quiz, setQuiz] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const [, setMateri] = useAtom(material);
+
   const renderCustomResultPage = (obj: any) => {
-    return <ModalQuestionsCopleted obj={obj} isOpen onClose={() => navigate(-1)} />;
+    return (
+      <ModalQuestionsCopleted
+        obj={obj}
+        isOpen
+        onClose={() => {
+          navigate('/material');
+          setMateri((prev: any) => prev + 1);
+        }}
+      />
+    );
   };
 
   useEffect(() => {

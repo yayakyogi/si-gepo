@@ -59,6 +59,7 @@ const MaterialDetailPage: React.FC = () => {
               <IconButton aria-label="button-back" variant="link" onClick={() => navigate('/material', { replace: true })}>
                 <IconChevronLeft color="white" size={28} />
               </IconButton>
+
               <Text className={style.title}>{materialObj?.material?.title}</Text>
             </Flex>
             <ProgressBar currentValue={currentIndex + 1} maxValue={materialObj?.material?.subMaterial.length} />

@@ -18,6 +18,9 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [{ find: /^~/, replacement: '' }],
     },
+    define: {
+      'process.env': {},
+    },
     css: {
       modules: {
         generateScopedName: 'nimo-v2-[local]-[hash:base64:5]',
