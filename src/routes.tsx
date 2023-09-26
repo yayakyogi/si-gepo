@@ -5,7 +5,9 @@ import MaterialPage from '@pages/material';
 import MaterialDetailPage from '@pages/material/detail';
 import MaterialQuestionsPage from '@pages/material/question';
 import OnBoardPage from '@pages/onboard';
+import ManualBookPage from '@pages/manual-book';
 import { RouteObject } from 'react-router-dom';
+import RulePage from '@pages/rule';
 
 export default [
   {
@@ -19,6 +21,14 @@ export default [
   {
     path: '/homepage',
     element: <HomePage />,
+  },
+  {
+    path: '/manual-book',
+    element: <ManualBookPage />,
+  },
+  {
+    path: '/rule',
+    element: <RulePage />,
   },
   {
     path: '/material',

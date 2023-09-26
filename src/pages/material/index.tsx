@@ -7,6 +7,7 @@ import { useAtom } from 'jotai';
 import { map } from 'lodash-es';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IconLock } from '@tabler/icons-react';
 
 import style from './style.module.scss';
 
@@ -29,7 +30,11 @@ const MaterialPage: React.FC = () => {
             <Grid templateColumns="repeat(3, 2fr)" gap={10}>
               {map(materialJson, (menu, idx) => {
                 return idx > materiNumber ? (
-                  <Text>Disabled</Text>
+                  <Box className={style.materialLevel}>
+                    <Flex justifyContent="center" alignItems="center" h="full">
+                      <IconLock size="50" />
+                    </Flex>
+                  </Box>
                 ) : (
                   <GridItem w="full" key={idx} onClick={() => navigate(`/material/${menu.id}`)}>
                     <Flex justifyContent="center" alignItems="start" gap={2} className={style.materialLevel}>

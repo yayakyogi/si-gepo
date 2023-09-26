@@ -5,13 +5,12 @@ const config: CapacitorConfig = {
   appName: 'nimo-v2',
   webDir: 'dist',
   bundledWebRuntime: false,
-,
-    android: {
-       buildOptions: {
-          keystorePath: 'c:\Users\X1\Documents\Android\sigepo.jks',
-          keystoreAlias: 'android',
-       }
-    }
-  };
+  android: {
+    buildOptions: {
+      keystorePath: 'c:UsersX1DocumentsAndroidsigepo.jks',
+      keystoreAlias: 'android',
+    },
+  },
+};
 
 export default config;

@@ -39,29 +39,31 @@ const LoginPage: React.FC = () => {
     shouldUnregister: true,
   });
 
-  const onSubmit = (val: { username: string; password: string }) => {
-    const { username, password } = val;
+  const onSubmit = () => {
+    toast.success('Selamat Menikmati Permainan');
+    navigate('/homepage');
+    // const { username, password } = val;
 
-    setIsLoading(true);
+    // setIsLoading(true);
 
-    fetch(`${import.meta.env.VITE_REST_URL}/user/login`, { method: 'POST', body: JSON.stringify({ username, password }) })
-      .then((val) => val.json())
-      .then((res) => {
-        const { data, success } = res;
+    // fetch(`${import.meta.env.VITE_REST_URL}/user/login`, { method: 'POST', body: JSON.stringify({ username, password }) })
+    //   .then((val) => val.json())
+    //   .then((res) => {
+    //     const { data, success } = res;
 
-        if (success) {
-          toast.success(`Selamat Menikmati Permainan ${data.name}`);
-          navigate('/homepage');
-        } else {
-          toast.error(`Error: ${data.message}`);
-        }
+    //     if (success) {
+    //       toast.success(`Selamat Menikmati Permainan ${data.name}`);
+    //       navigate('/homepage');
+    //     } else {
+    //       toast.error(`Error: ${data.message}`);
+    //     }
 
-        setIsLoading(false);
-      })
-      .catch((error: any) => {
-        toast.error(`Error: ${error.message}`);
-        setIsLoading(false);
-      });
+    //     setIsLoading(false);
+    //   })
+    //   .catch((error: any) => {
+    //     toast.error(`Error: ${error.message}`);
+    //     setIsLoading(false);
+    //   });
   };
 
   return (
@@ -85,7 +87,7 @@ const LoginPage: React.FC = () => {
                 size="lg"
                 className={errors.username ? 'input-error' : undefined}
                 placeholder="Masukkan username"
-                {...register('username', { required: { value: true, message: '*Username wajib diisi' } })}
+                {...register('username', { required: { value: false, message: '*Username wajib diisi' } })}
               />
               {errors.username && (
                 <Text color="white" fontWeight={700} fontSize={12}>
@@ -102,7 +104,7 @@ const LoginPage: React.FC = () => {
                   type={showPassword ? 'text' : 'password'}
                   size="lg"
                   placeholder="Masukkan password"
-                  {...register('password', { required: { value: true, message: 'Password harus diisi!' } })}
+                  {...register('password', { required: { value: false, message: 'Password harus diisi!' } })}
                 />
                 <InputRightElement>
                   <IconButton

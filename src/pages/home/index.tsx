@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import { Box, Button, Flex, IconButton, Image } from '@chakra-ui/react';
 import Title from '@components/ui/title/title.component';
 import { IconInfoCircle, IconLogout, IconSettings } from '@tabler/icons-react';
@@ -25,10 +26,10 @@ const HomePage: React.FC = () => {
               Mulai Permainan
             </Button>
           </Flex>
-          <IconButton aria-label="rule" className={style.buttonRule} onClick={() => setIsModalInfoRule(true)}>
+          <IconButton aria-label="rule" className={style.buttonRule} onClick={() => navigate('/rule')}>
             <IconSettings size={50} />
           </IconButton>
-          <IconButton aria-label="manual-book" className={style.buttonInfo} onClick={() => setIsModalInfoManualBook(true)}>
+          <IconButton aria-label="manual-book" className={style.buttonInfo} onClick={() => navigate('/manual-book')}>
             <IconInfoCircle size={50} />
           </IconButton>
           <IconButton aria-label="logout" className={style.buttonLogout} onClick={() => setIsModalConfimartion(true)}>
@@ -45,12 +46,7 @@ const HomePage: React.FC = () => {
         onClose={() => setIsModalConfimartion(false)}
       />
 
-      <ModalInfo
-        isOpen={isModalInfoRule}
-        title="Aturan Permainan"
-        message="Dalam Tahap Pengembangan"
-        onClose={() => setIsModalInfoRule(false)}
-      />
+      <ModalInfo isOpen={isModalInfoRule} title="Aturan Permainan" message="" onClose={() => setIsModalInfoRule(false)} />
 
       <ModalInfo
         isOpen={isModalInfoManualBook}
