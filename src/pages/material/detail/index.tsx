@@ -13,6 +13,8 @@ import {
   IconUserQuestion,
 } from '@tabler/icons-react';
 import { filter } from 'lodash-es';
+import { useAtomValue } from 'jotai';
+import { material } from '@state/atom';
 
 import style from './style.module.scss';
 
@@ -24,6 +26,7 @@ const MaterialDetailPage: React.FC = () => {
   const [materialObj, setMaterialObj] = useState<any>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isModalVideoOpen, setIsModalVideoOpen] = useState<boolean>(false);
+  const materi = useAtomValue(material);
 
   useEffect(() => {
     if (id) {
@@ -82,6 +85,7 @@ const MaterialDetailPage: React.FC = () => {
                 size="sm"
                 bgColor="#1ABC9C"
                 color="white"
+                isDisabled={currentIndex !== (materialObj?.material?.subMaterial.length || 0) - 1 || materi === Number(id)}
                 leftIcon={<IconUserQuestion />}
                 onClick={() => navigate(`/material/${id}/quiz`)}
               >

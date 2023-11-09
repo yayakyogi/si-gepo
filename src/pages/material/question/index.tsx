@@ -1,14 +1,10 @@
-import { Box, Flex, Spinner, Text } from '@chakra-ui/react';
+import { Button, Flex, Spinner, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import Quiz from 'react-quiz-component';
 
-import ModalQuestionsCopleted from '@components/modal/questions-completed/questions-completed.component';
 import { materialQuiz1, materialQuiz2 } from '@resources/questions';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAtom } from 'jotai';
 
 import ButtonBack from '@components/ui/button-back/button-back.component';
-import { material } from '@state/atom';
 import style from './style.module.scss';
 
 const MaterialQuestionsPage: React.FC = () => {
@@ -16,21 +12,6 @@ const MaterialQuestionsPage: React.FC = () => {
   const navigate = useNavigate();
   const [quiz, setQuiz] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  const [, setMateri] = useAtom(material);
-
-  const renderCustomResultPage = (obj: any) => {
-    return (
-      <ModalQuestionsCopleted
-        obj={obj}
-        isOpen
-        onClose={() => {
-          navigate('/material');
-          setMateri((prev: any) => prev + 1);
-        }}
-      />
-    );
-  };
 
   useEffect(() => {
     if (Number(id) === 1) {
@@ -44,7 +25,6 @@ const MaterialQuestionsPage: React.FC = () => {
 
   return (
     <Flex direction="column" className={style.container}>
-      <ButtonBack link={`/material/${id}`} />
       {isLoading ? (
         <Flex
           w="full"
@@ -59,36 +39,31 @@ const MaterialQuestionsPage: React.FC = () => {
           <Text color="white">Loading...</Text>
         </Flex>
       ) : (
-        <Box className={style.box}>
-          <Quiz quiz={quiz} showDefaultResult={false} customResultPage={renderCustomResultPage} />
-        </Box>
+        <Flex direction="column" p={5} h="full" className={style.box}>
+          <Flex align="center" gap={3} mb={5}>
+            <ButtonBack link={`/material/${id}`} />
+            <Text color="white" fontSize={16}>
+              {quiz?.quizTitle}
+            </Text>
+          </Flex>
+          <Flex flex={1} direction="column" h="full">
+            <Text flex={1} color="white">
+              {quiz?.quizSynopsis}
+            </Text>
+            <Button
+              colorScheme="primary"
+              mt={5}
+              onClick={() =>
+                navigate('question', { state: JSON.stringify({ title: quiz?.quizTitle, questions: quiz?.questions }) })
+              }
+            >
+              SOAL
+            </Button>
+          </Flex>
+        </Flex>
       )}
     </Flex>
   );
 };
 
 export default MaterialQuestionsPage;
-
-/*
-correctPoints
-: 
-0
-numberOfCorrectAnswers
-: 
-0
-numberOfIncorrectAnswers
-: 
-0
-numberOfQuestions
-: 
-5
-questions
-: 
-(5) [{…}, {…}, {…}, {…}, {…}]
-totalPoints
-: 
-0
-userInput
-: 
-[]
-*/

@@ -8,6 +8,8 @@ import OnBoardPage from '@pages/onboard';
 import ManualBookPage from '@pages/manual-book';
 import { RouteObject } from 'react-router-dom';
 import RulePage from '@pages/rule';
+import RegisterPage from '@pages/register';
+import MaterialQuestionQuizPage from '@pages/material/question/quiz';
 
 export default [
   {
@@ -17,6 +19,10 @@ export default [
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
   },
   {
     path: '/homepage',
@@ -46,7 +52,16 @@ export default [
           },
           {
             path: 'quiz',
-            element: <MaterialQuestionsPage />,
+            children: [
+              {
+                index: true,
+                element: <MaterialQuestionsPage />,
+              },
+              {
+                path: 'question',
+                element: <MaterialQuestionQuizPage />,
+              },
+            ],
           },
         ],
       },

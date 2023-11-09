@@ -12,7 +12,7 @@ interface Props {
 
 const ModalVideo: React.FC<Props> = ({ isOpen, video, title, onClose }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside" size="full" motionPreset="slideInBottom">
+    <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside" size="md" motionPreset="slideInBottom">
       <ModalOverlay />
       <ModalContent bgImage="/images/illustrations/10. HALAMAN VIDEO.png" bgSize="cover">
         <ModalHeader fontSize={14} color="white" textAlign="center">

@@ -9,10 +9,6 @@ const ButtonBack: React.FC<{ link: string }> = ({ link }) => {
   return (
     <IconButton
       aria-label="button-back"
-      position="absolute"
-      zIndex={2}
-      top={3}
-      left={3}
       bgColor="#D9435E"
       borderRadius="full"
       onClick={() => navigate(link, { replace: true })}
