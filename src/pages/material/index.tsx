@@ -30,7 +30,7 @@ const MaterialPage: React.FC = () => {
             <Text className={style.materialTitle} fontWeight={400} fontSize={24} mb={5}>
               Materi
             </Text>
-            <Grid templateColumns="repeat(2, 2fr)" gap={2}>
+            <Grid templateColumns="repeat(3, 1fr)" gap={2}>
               {map(materialJson, (menu, idx) => {
                 return idx !== materiNumber ? (
                   <Box key={idx} className={style.materialLevel}>

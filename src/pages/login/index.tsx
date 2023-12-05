@@ -12,7 +12,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import Title from '@components/ui/title/title.component';
-import { useToast } from '@hooks/useToast';
+// import { useToast } from '@hooks/useToast';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -24,7 +24,7 @@ const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const toast = useToast();
+  // const toast = useToast();
   const navigate = useNavigate();
 
   const {
@@ -39,29 +39,31 @@ const LoginPage: React.FC = () => {
     shouldUnregister: true,
   });
 
-  const onSubmit = (val) => {
-    const { username, password } = val;
+  const onSubmit = () => {
+    // const { username, password } = val;
 
     setIsLoading(true);
 
-    fetch(`${import.meta.env.VITE_REST_URL}/user/login`, { method: 'POST', body: JSON.stringify({ username, password }) })
-      .then((val) => val.json())
-      .then((res) => {
-        const { data, success } = res;
+    navigate('/homepage');
 
-        if (success) {
-          toast.success(`Selamat Menikmati Permainan ${data.name}`);
-          navigate('/homepage');
-        } else {
-          toast.error(`Error: ${data.message}`);
-        }
+    // fetch(`${import.meta.env.VITE_REST_URL}/user/login`, { method: 'POST', body: JSON.stringify({ username, password }) })
+    //   .then((val) => val.json())
+    //   .then((res) => {
+    //     const { data, success } = res;
 
-        setIsLoading(false);
-      })
-      .catch((error: any) => {
-        toast.error(`Error: ${error.message}`);
-        setIsLoading(false);
-      });
+    //     if (success) {
+    //       toast.success(`Selamat Menikmati Permainan ${data.name}`);
+    //       navigate('/homepage');
+    //     } else {
+    //       toast.error(`Error: ${data.message}`);
+    //     }
+
+    //     setIsLoading(false);
+    //   })
+    //   .catch((error: any) => {
+    //     toast.error(`Error: ${error.message}`);
+    //     setIsLoading(false);
+    //   });
   };
 
   return (

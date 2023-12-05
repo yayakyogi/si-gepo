@@ -1,5 +1,5 @@
 .container {
-  max-width: $container-width;
+  // max-width: $container-width;
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -8,7 +8,7 @@
   .header {
     margin-bottom: 24px;
     position: fixed;
-    max-width: $container-width;
+    // max-width: $container-width;
     width: 100%;
     z-index: 999;
   }

@@ -1,20 +1,36 @@
 import { Button, Flex, Modal, ModalBody, ModalContent, ModalOverlay, Text } from '@chakra-ui/react';
+import { material } from '@state/atom';
+import { useAtom } from 'jotai';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { IconReload, IconX } from '@tabler/icons-react';
 
 import style from './questions-completed.module.scss';
 
 interface Props {
   isOpen: boolean;
-  obj: any;
-  onClose: () => void;
+  result: {
+    correctAnswer: number;
+    inCorrectAnswer: number;
+    correctPoint: number;
+    totalPoint: number;
+  };
+  onReset: () => void;
 }
 
-const ModalQuestionsCopleted: React.FC<Props> = ({ isOpen, obj, onClose }) => {
+const ModalQuestionsCopleted: React.FC<Props> = ({ isOpen, result, onReset }) => {
+  const navigate = useNavigate();
+  const [, setMateri] = useAtom(material);
+
+  const handleClose = () => {
+    setMateri((prev: any) => prev + 1);
+    navigate('/material', { replace: true });
+  };
+
   return (
-    <Modal isCentered isOpen={isOpen} onClose={onClose} scrollBehavior="inside" size="full">
+    <Modal isCentered isOpen={isOpen} onClose={handleClose} scrollBehavior="inside" size="full">
       <ModalOverlay />
       <ModalContent bgImage="/images/illustrations/11. HALAMAN EXIT.jpg" bgSize="cover">
-        {/* <ModalHeader>Selamat anda berhasil menyelesaikan semua soal!</ModalHeader> */}
         <ModalBody className={style.body}>
           <Text fontSize={20} mb={5}>
             Selamat anda berhasil menyelesaikan semua soal!
@@ -22,22 +38,20 @@ const ModalQuestionsCopleted: React.FC<Props> = ({ isOpen, obj, onClose }) => {
           <Text fontSize={18} fontWeight={700} mb={3}>
             Hasil :
           </Text>
-          <Text fontSize={18}>Jawaban Benar : {obj.numberOfCorrectAnswers}</Text>
-          <Text fontSize={18}>Jawaban Salah : {obj.numberOfIncorrectAnswers}</Text>
+          <Text fontSize={18}>Jawaban Benar : {result.correctAnswer}</Text>
+          <Text fontSize={18}>Jawaban Salah : {result.inCorrectAnswer}</Text>
           <Text fontSize={18}>
-            Anda mendapat point : {obj.correctPoints} dari {obj.totalPoints}
+            Anda mendapat point : {result.correctPoint} dari {result.totalPoint}
           </Text>
-          <Flex justifyContent="center" mt={8}>
-            <Button onClick={onClose} size="lg" colorScheme="primary">
+          <Flex justifyContent="center" gap={3} mt={8}>
+            <Button leftIcon={<IconReload />} onClick={onReset}>
+              Ulangi Soal
+            </Button>
+            <Button leftIcon={<IconX />} onClick={handleClose} colorScheme="primary">
               Tutup
             </Button>
           </Flex>
         </ModalBody>
-        {/* <ModalFooter justifyContent="center">
-          <Button onClick={onClose} colorScheme="primary">
-            Tutup
-          </Button>
-        </ModalFooter> */}
       </ModalContent>
     </Modal>
   );

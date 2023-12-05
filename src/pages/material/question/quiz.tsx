@@ -1,25 +1,81 @@
-import { Box, Button, Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useRadioGroup } from '@chakra-ui/react';
 import ButtonBack from '@components/ui/button-back/button-back.component';
 import React, { useEffect, useState } from 'react';
 
-import { useToast } from '@hooks/useToast';
-import { material } from '@state/atom';
-import { useAtom } from 'jotai';
-import { map } from 'lodash-es';
+import ModalQuestionsCopleted from '@components/modal/questions-completed/questions-completed.component';
+import RadioCard from '@components/radio-card/radio-card.component';
+import { findIndex, map, sumBy } from 'lodash-es';
 import { useLocation, useParams } from 'react-router-dom';
 import style from './style.module.scss';
 
 const MaterialQuestionQuizPage: React.FC = () => {
   const { id } = useParams();
   const params = useLocation();
-  const toast = useToast();
 
   const [questions, setQuestions] = useState<any[]>([]);
   const [title, setTitle] = useState<any>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState<number>(0);
-  const [, setMateri] = useAtom(material);
+  const [correctAnswer, setCorrectAnswer] = useState<number>(0);
+  const [inCorrectAnswer, setInCorrectAnswer] = useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const step = questions[currentIndex];
+
+  const { getRadioProps } = useRadioGroup({
+    name: 'questions',
+    defaultValue: '',
+    onChange: (value) => {
+      const tes = findIndex(step.answers, (val) => val === value);
+
+      setAnswer((tes + 1).toString());
+    },
+  });
+
+  const handleNextQuestion = () => {
+    if (answer === step.correctAnswer && currentIndex <= questions.length - 1) {
+      setScore((old) => old + Number(step.point));
+      setCorrectAnswer((old) => old + 1);
+    } else {
+      setInCorrectAnswer((old) => old + 1);
+    }
+
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setAnswer('');
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+
+  const renderStep = () => {
+    return step ? (
+      <>
+        <Box flex={1} overflow="scroll" py={2} px={2}>
+          <Text color="white" fontWeight={700} fontSize={18} mb={3}>
+            {currentIndex + 1}. {step.question}
+          </Text>
+          <Flex direction="column" gap={2} mb={10}>
+            {map(step.answers, (value, index) => {
+              const radio = getRadioProps({ value });
+
+              return (
+                <RadioCard key={index} {...radio}>
+                  {value}
+                </RadioCard>
+              );
+            })}
+          </Flex>
+        </Box>
+        <Box position="absolute" bottom={0} left={0} width="full" py={2} px={6}>
+          <Button colorScheme="primary" width="full" isDisabled={!answer} onClick={handleNextQuestion}>
+            Selanjutnya
+          </Button>
+        </Box>
+      </>
+    ) : null;
+  };
 
   useEffect(() => {
     const quiz = JSON.parse(params.state);
@@ -27,59 +83,6 @@ const MaterialQuestionQuizPage: React.FC = () => {
     setQuestions(quiz.questions);
     setTitle(quiz.title);
   }, []);
-
-  const renderStep = () => {
-    const step = questions[currentIndex];
-
-    return step ? (
-      <>
-        <Box flex={1} overflow="scroll" py={2}>
-          <Text color="white" fontWeight={700} fontSize={18} mb={3}>
-            {currentIndex + 1}. {step.question}
-          </Text>
-          <RadioGroup
-            value={answer}
-            onChange={(val) => {
-              setAnswer(val);
-            }}
-          >
-            <Stack>
-              {map(step.answers, (val, idx) => {
-                return (
-                  <Box key={idx} bgColor="yelow">
-                    <Radio value={(idx + 1).toString()}>
-                      <Text key={val} color="white" fontSize={16}>
-                        {val}
-                      </Text>
-                    </Radio>
-                  </Box>
-                );
-              })}
-            </Stack>
-          </RadioGroup>
-        </Box>
-        <Button
-          colorScheme="primary"
-          isDisabled={!answer}
-          onClick={() => {
-            if (answer === step.correctAnswer && currentIndex < questions.length - 1) {
-              setScore((old) => old + Number(step.point));
-            }
-
-            if (currentIndex < questions.length - 1) {
-              setCurrentIndex(currentIndex + 1);
-              setAnswer('');
-            } else {
-              toast.success(`Selamat kamu berhasil menjawab semua pertanya, score kamu ${score}`);
-              setMateri((prev: any) => prev + 1);
-            }
-          }}
-        >
-          Selanjutnya
-        </Button>
-      </>
-    ) : null;
-  };
 
   return (
     <Flex direction="column" className={style.container}>
@@ -92,6 +95,23 @@ const MaterialQuestionQuizPage: React.FC = () => {
         </Flex>
         {renderStep()}
       </Flex>
+      <ModalQuestionsCopleted
+        isOpen={isModalOpen}
+        result={{
+          correctAnswer,
+          inCorrectAnswer,
+          correctPoint: score,
+          totalPoint: sumBy(questions[currentIndex], 'point'),
+        }}
+        onReset={() => {
+          setIsModalOpen(false);
+          setInCorrectAnswer(0);
+          setCorrectAnswer(0);
+          setCurrentIndex(0);
+          setAnswer('');
+          setScore(0);
+        }}
+      />
     </Flex>
   );
 };
