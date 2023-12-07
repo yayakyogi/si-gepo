@@ -25,5 +25,9 @@
       font-family: $font-chewy;
       border: 2px solid $white-color;
     }
+
+    .material-inactive {
+      background-color: rgba($danger-color, 0.5);
+    }
   }
 }

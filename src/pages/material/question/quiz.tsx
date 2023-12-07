@@ -52,11 +52,11 @@ const MaterialQuestionQuizPage: React.FC = () => {
   const renderStep = () => {
     return step ? (
       <>
-        <Box flex={1} overflow="scroll" py={2} px={2}>
+        <Box flex={1} overflow="scroll" px={4} pt={2} pb={4}>
           <Text color="white" fontWeight={700} fontSize={18} mb={3}>
             {currentIndex + 1}. {step.question}
           </Text>
-          <Flex direction="column" gap={2} mb={10}>
+          <Flex direction="column" gap={2}>
             {map(step.answers, (value, index) => {
               const radio = getRadioProps({ value });
 
@@ -68,7 +68,7 @@ const MaterialQuestionQuizPage: React.FC = () => {
             })}
           </Flex>
         </Box>
-        <Box position="absolute" bottom={0} left={0} width="full" py={2} px={6}>
+        <Box className={style.buttonNext}>
           <Button colorScheme="primary" width="full" isDisabled={!answer} onClick={handleNextQuestion}>
             Selanjutnya
           </Button>
@@ -86,8 +86,8 @@ const MaterialQuestionQuizPage: React.FC = () => {
 
   return (
     <Flex direction="column" className={style.container}>
-      <Flex direction="column" p={5} h="full" className={style.box}>
-        <Flex align="center" gap={3} mb={5}>
+      <Flex direction="column" h="full" className={style.box}>
+        <Flex align="center" gap={3} p={3}>
           <ButtonBack link={`/material/${id}/quiz`} />
           <Text color="white" fontSize={16}>
             {title}

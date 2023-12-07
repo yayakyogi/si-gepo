@@ -11,7 +11,7 @@ const OnBoardPage: React.FC = () => {
   return (
     <Flex w="full" direction="column" justifyContent="center" alignItems="center" gap={3} className={style.container}>
       <Title />
-      <Image src="/images/illustrations/4A. KARAKTER SI GEPO.gif" h="28" />
+      <Image src="/images/illustrations/1. HALAMAN LOGIN.gif" h="28" />
       <Button mb={3} onClick={() => navigate('/login')}>
         Login
       </Button>

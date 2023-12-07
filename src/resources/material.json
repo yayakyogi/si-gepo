@@ -1,13 +1,13 @@
 [
   {
     "id": 1,
-    "name": "INTERAKSI PIKIRAN & PERILAKU (SUMBER NORMA)",
+    "name": "Konsep Dasar Budi Pekerti",
     "material": {
-      "title": "INTERAKSI PIKIRAN & PERILAKU (SUMBER NORMA)",
+      "title": "Konsep Dasar Budi Pekerti",
       "description": "",
       "subMaterial": [
         {
-          "title": "Pemahaman tentang Norma",
+          "title": "Pengertian Budi Pekerti",
           "description": "Norma adalah petunjuk tingkah laku yang harus dilakukan dan tidak boleh dilakukan dalam hidup sehari-hari, berdasarkan suatu alasan (motivasi) tertentu dengan disertai sanksi. Sanksi adalah ancaman/akibat yang akan diterima apabila norma tidak dilakukan."
         },
         {
@@ -36,6 +36,45 @@
   },
   {
     "id": 2,
+    "name": "PERKEMBANGAN MORAL (NILAI PENDIDIKAN MORAL)",
+    "material": {
+      "title": "PERKEMBANGAN MORAL (NILAI PENDIDIKAN MORAL)",
+      "description": "Pendidikan moral memilki esensi dan makna yang sama dengan pendidikan akhlak yaitu penanaman nilai-nilai tertentu dalam diri. Tujuannya adalah untuk membentuk pribadi, supaya menjadi manusia yang bermoral, yaitu manusia baik, yang mampu menggunakan akal dan perasaannya berlandaskan nilai-nilai luhur, norma-norma agama, dan adat istiadat dalam kehidupannya. Manusia yang mampu berbuat baik disertai kemampuan untuk berinovasi kreatif, produktif dan mandiri.",
+      "subMaterial": [
+        {
+          "title": "Tujuan dari Pendidikan Moral",
+          "description": "Mengajak untuk mengklarifikasi dan mengungkap dirinya. Membina, meningkatkan serta mengembangkan masalah afeksi melalui cara yang wajar dan sesuai dengan potensi diri yang bersangkutan. Membawakan dunia emosionala feksi dalam pengajaran serta melatih untuk melakoni-nya sendiri. Melatih dan membina perbaikan kehidupan sosial social and life adjusment. Menanamkan nilai/sistem nilai yang utama serta melestarikannya Membina tata cara pemahaman (understanding) moral dan perilaku seseorang dengan kajian sistem nilai. Membina kesadaran akan perlunya nilai moral, kebaikan tentang suatu nilai dan mendorong keinginan untuk menganut serta melaksanakannya. Pengembangan kepribadian. Sasaran atau target dalam pembelajaran moral, tidak hanya sebatas kemampuan afektif anak saja, tetapi domain lainnya turut menjadi sasaran, seperti domain kognitif dan psikomotor. Ketiganya merupakan suatu kesatuan yang utuh dan bulat. Dalam Pendidikan moral memilki esensi dan makna yang sama dengan pendidikan akhlak yaitu penanaman nilai-nilai tertentu dalam diri anak. Tujuannya adalah untuk membentuk pribadi, supaya menjadi manusia yang bermoral, yaitu manusia baik, yang mampu menggunakan akal dan perasaannya berlandaskan nilai-nilai luhur, norma-norma agama, dan adat istiadat dalam kehidupannya. Manusia yang mampu berbuat baik disertai kemampuan untuk berinovasi kreatif, produktif dan mandiri  "
+        },
+        {
+          "title": "Kepatuhan",
+          "description": "Moral menunjuk kepada aturan-aturan yang harus dilaksanakan dan kepada citra diri tentang apa yang harus dilakukan oleh orang-orang yang baik, loyal dan terpercaya terhadap sasarannya. Secara lebih jelas seseorang melihat dan mematuhi peranan social dalam dirinya dimana banyak mempengaruhi peranan moralnya. Manusia telah dibekali kesadaran sosial sebagai fitrah yang dibawanya sejak lahir. Kesadaran moral adalah kesadaran tentang diri sendiri dalam berhadapan dengan baik dan buruk. Kecenderungan manusia itu ingin berbuat dengan hukum-hukum moral karena manusia selalu ingin mengikuti ajaran Tuhan."
+        },
+        {
+          "title": "Keadilan",
+          "description": "Prinsip yang paling inti bagi perkembangan moral adalah prinsip keadilan. Keadilan adalah penghargaan utama terhadap nilai dan persamaan semua insan manusia, merupakan tolak ukur yang mendasar dan universal. Penggunaan keadilan sebagai prinsip itu dijamin kebebasan dalam berkeyakinan, menggunakan konsep moralitas yang dapat dibenarkan secara filosofis dan didasarkan pada fakta-fakta psikologis dan perkembangan manusia. Tahap keadilan itu diangkat menjadi tahap tertinggi dan merupakan titik acuan bagi seluruh proses perkembangan moral manusia. Dengan kata lain keadilan dalam prinsip moral bermakna adanya perhatian terhadap orang lain secara sama."
+        },
+        {
+          "title": "Kesopanan",
+          "description": "Moral adalah adat istiadat, kebiasaan, peraturan atau nilai-nilai dan tata cara kehidupan. Nilai-nilai moral yang bermaksud seperti kejujuran, kesopanan dan kedisiplinan."
+        },
+        {
+          "title": "Kedisiplinan",
+          "description": "Moral berkaitan dengan disiplin, kemajuan, kualitas perasaan, emosi, dan kecenderungan manusia."
+        },
+        {
+          "title": "Kepedulian",
+          "description": "Perasaan simpati dan kepedulian kepada orang lain merupakan dasar motivasi yang penting bagi penataan tindakan moral. Toleran dan pengorbanan diri adalah masalah penghargaan diri dan tanda keterbukaan hati dan kebesaran jiwa sehingga menjalani kepentingannya demi kepentingan orang lain dan untuk mempertahankan tujuan yang diharapkan. Menghormati orang lain dan menghargai prestasinya, juga merupakan sifat mulia. Sifat-sifat mulia adalah bagian dari nilai moral tertinggi."
+        },
+        {
+          "title": "Pendidikan Moral di Berbagai Negara",
+          "description": "Pendidikan Moral pada tiap-tiap Negara berbeda satu dengan lainnya. Dalam Negara yang menjadikan agama sebagai hukum dasarnya maka pendidikan moral bersumberkan pada agama yang berlaku di Negara itu. Pembentukan moral warganegara dan bangsa Negara yang bersangkutan dilakukan menurut norma-norma agama tersebut melalui pendidikan agama. Bagi Negara yang tidak memakai agama sebagai hukum dasarnya, pendidikan moral didasarkan pada hukum dasar dan nilai-nilai yang terkandung dalam hukum dasar itu. Dengan pendidikan civics dibinalah warganegara yang lebih baik dalam suatu masyarakat yang demokratis. Bagi bangsa Indonesia pendidikan moral sudah dikenal sejak lama, malahan sebelum bangsa Indonesia menyatakan kemerdekaannya. Penjajahan bangsa asing terhadap bangsa Indonesia tidak menghapuskan dasar pendidikan moral itu. Pendidikan moral pada waktu itu terdapat dalam religi, adat-istiadat dan kebudayaan merupakan asal mula bahan Pancasila dasar Negara Republik Indonesia dan diintegrasikan pada bentuk-bentuk pendidikan yang ada."
+        }
+      ],
+      "video": "/video/2. VIDEO PERKEMBANGAN MORAL (NILAI PENDIDIKAN MORAL).mp4"
+    }
+  },
+  {
+    "id": 3,
     "name": "PERKEMBANGAN MORAL (NILAI PENDIDIKAN MORAL)",
     "material": {
       "title": "PERKEMBANGAN MORAL (NILAI PENDIDIKAN MORAL)",

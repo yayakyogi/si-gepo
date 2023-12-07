@@ -21,19 +21,26 @@ const HomePage: React.FC = () => {
         <Box className={style.box}>
           <Flex h="full" direction="column" justifyContent="center" alignItems="center">
             <Title isCentered />
-            <Image src="/images/illustrations/6B. KARAKTER SI GEPO.gif" w="32" />
-            <Button size="lg" borderRadius="50px" colorScheme="primary" mt={3} onClick={() => navigate('/material')}>
+            <Image src="/images/illustrations/2. HALAMAN MULAI PERMAIANAN.gif" w="32" />
+            <Button
+              size="lg"
+              borderRadius="50px"
+              colorScheme="primary"
+              className="font-chewy"
+              mt={3}
+              onClick={() => navigate('/material')}
+            >
               Mulai Permainan
             </Button>
           </Flex>
           <IconButton aria-label="rule" className={style.buttonRule} onClick={() => navigate('/rule')}>
-            <IconSettings size={50} />
+            <IconSettings size={35} />
           </IconButton>
           <IconButton aria-label="manual-book" className={style.buttonInfo} onClick={() => navigate('/manual-book')}>
-            <IconInfoCircle size={50} />
+            <IconInfoCircle size={35} />
           </IconButton>
           <IconButton aria-label="logout" className={style.buttonLogout} onClick={() => setIsModalConfimartion(true)}>
-            <IconLogout size={50} />
+            <IconLogout size={35} />
           </IconButton>
         </Box>
       </Flex>

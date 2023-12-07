@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, ListItem, OrderedList, Text, UnorderedList } from '@chakra-ui/react';
 import ButtonBack from '@components/ui/button-back/button-back.component';
 import React from 'react';
 
@@ -6,29 +6,35 @@ const RulePage: React.FC = () => {
   return (
     <Box
       padding="10px"
-      ps={20}
       w="full"
       backgroundImage="/images/illustrations/3. HALAMAN REGISTRASI_.jpg"
       backgroundSize="cover"
       color="white"
     >
-      <Box position="fixed" top={0} left={0} zIndex={0} w="full" h="full" bgColor="rgba(0,0,0,0.5)" />
-      <Box position="absolute" top={0} left={0}>
+      <Box position="fixed" top={0} left={0} zIndex={0} w="full" h="full" bgColor="rgba(0,0,0,0.7)" />
+      <Flex gap={3} zIndex={1}>
         <ButtonBack link="/homepage" />
-      </Box>
-      <Flex direction="column" gap={3} zIndex={1} position="relative">
-        <Text fontWeight={500} fontSize={20} mb={4}>
+        <Text fontWeight={500} fontSize={20} mb={4} zIndex={1}>
           Aturan Permainan Si-GEPO
         </Text>
-        <Text>• LOGIN (ISI IDENTITAS)</Text>
-        <Text>• BUKA MANUAL PETUNJUK</Text>
-        <Text>• MULAI PERMAINAN DENGAN KARAKTER SI-GEPO</Text>
-        <Text>• MULAI MATERI</Text>
-        <Text>• BUKA DESKRIPSI MATERI</Text>
-        <Text>• BUKA VIDEO MATERI</Text>
-        <Text>• KERJAKAN SOAL SECARA BERURUTAN (WAJIB DIJAWAB)</Text>
-        <Text>• TAMPILAN DENGAN SKOR & POP UP</Text>
-        <Text>• KEMBALI KE MATERI SELANJUTNYA</Text>
+      </Flex>
+      <Flex direction="column" gap={3} px={5} position="relative" className="font-chewy">
+        <OrderedList>
+          <ListItem fontSize={16}>SETIAP MATERI TERDIRI DARI 7 ITEM PERTANYAAN YANG MEMPUNYAI INDIKATOR</ListItem>
+          <UnorderedList>
+            <ListItem>Pola interaksi pikiran, emosi dan perilaku</ListItem>
+            <ListItem>Identifikasi core beliefs</ListItem>
+            <ListItem>Identifikasi distorsi positif</ListItem>
+            <ListItem>Identifikasi pikiran otomatis</ListItem>
+            <ListItem>mengetahui insight</ListItem>
+          </UnorderedList>
+          <ListItem mt={3}>POIN JAWABAN MATERI</ListItem>
+          <UnorderedList>
+            <ListItem>80-100 jika benar lebih dari 6-7 soal (Luar Biasa)</ListItem>
+            <ListItem>50-79 jika benar lebih dari 3-5 soal (Hebat)</ListItem>
+            <ListItem>10-49 Jika benar dari 1-2 soal (Tingkatkan)</ListItem>
+          </UnorderedList>
+        </OrderedList>
       </Flex>
     </Box>
   );

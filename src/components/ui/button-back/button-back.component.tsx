@@ -11,9 +11,10 @@ const ButtonBack: React.FC<{ link: string }> = ({ link }) => {
       aria-label="button-back"
       bgColor="#D9435E"
       borderRadius="full"
+      size="sm"
       onClick={() => navigate(link, { replace: true })}
     >
-      <IconChevronLeft color="white" size={30} />
+      <IconChevronLeft color="white" />
     </IconButton>
   );
 };

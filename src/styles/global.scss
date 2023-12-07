@@ -69,6 +69,11 @@ input::-webkit-inner-spin-button {
   border: 1px solid $secondary-color !important;
 }
 
+.font-chewy {
+  font-family: $font-chewy;
+  letter-spacing: 4px;
+}
+
 .react-quiz-container {
   width: 100%;
   max-width: fit-content;

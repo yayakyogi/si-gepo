@@ -1,4 +1,4 @@
-import { Box, Button, Flex, IconButton, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, IconButton, Image, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -42,11 +42,11 @@ const MaterialDetailPage: React.FC = () => {
     const step = materialObj?.material?.subMaterial[currentIndex];
 
     return step ? (
-      <Box flex={1} overflow="scroll" py={2}>
+      <Box overflow="scroll" py={2} px={6}>
         <Text color="white" fontWeight={700} fontSize={18} mb={3}>
           {step.title}
         </Text>
-        <Text color="white" fontSize={16}>
+        <Text color="white" fontSize={16} textAlign="justify">
           {step.description}
         </Text>
       </Box>
@@ -58,25 +58,35 @@ const MaterialDetailPage: React.FC = () => {
       <Flex w="full" direction="column" className={style.container}>
         <Flex direction="column" className={style.box}>
           <Box className={style.header}>
-            <Flex alignItems="center" gap={1} mb={3}>
+            <Flex alignItems="center" gap={2} mb={3}>
               <IconButton aria-label="button-back" variant="link" onClick={() => navigate('/material', { replace: true })}>
-                <IconChevronLeft color="white" size={28} />
+                <IconChevronLeft color="white" size={24} />
               </IconButton>
 
               <Text className={style.title}>{materialObj?.material?.title}</Text>
             </Flex>
             <ProgressBar currentValue={currentIndex + 1} maxValue={materialObj?.material?.subMaterial.length} />
           </Box>
-          {renderStep()}
-          <Flex justifyContent="space-between" alignItems="center" mt={3}>
+          <Flex flex={1}>
+            {renderStep()}
+            <Image src={`/images/illustrations/MATERI ${id}.gif`} alt="tes" width="25%" height="150px" />
+          </Flex>
+          <Flex
+            justifyContent="space-between"
+            alignItems="center"
+            position="sticky"
+            bottom={0}
+            mt={3}
+            className={style.footerAction}
+          >
             <Button size="sm" isDisabled={currentIndex < 1} onClick={() => setCurrentIndex(currentIndex - 1)}>
-              <IconPlayerTrackPrevFilled />
+              <IconPlayerTrackPrevFilled size="20" />
             </Button>
             <Flex gap={3}>
               <Button
                 size="sm"
                 colorScheme="primary"
-                leftIcon={<IconPlayerPlayFilled />}
+                leftIcon={<IconPlayerPlayFilled size="20" />}
                 onClick={() => setIsModalVideoOpen(true)}
               >
                 Lihat Video
@@ -86,7 +96,7 @@ const MaterialDetailPage: React.FC = () => {
                 bgColor="#1ABC9C"
                 color="white"
                 isDisabled={currentIndex !== (materialObj?.material?.subMaterial.length || 0) - 1 || materi === Number(id)}
-                leftIcon={<IconUserQuestion />}
+                leftIcon={<IconUserQuestion size="20" />}
                 onClick={() => navigate(`/material/${id}/quiz`)}
               >
                 Soal
@@ -97,7 +107,7 @@ const MaterialDetailPage: React.FC = () => {
               isDisabled={(materialObj?.material?.subMaterial.length || 0) - 1 === currentIndex}
               onClick={() => setCurrentIndex(currentIndex + 1)}
             >
-              <IconPlayerTrackNextFilled />
+              <IconPlayerTrackNextFilled size="20" />
             </Button>
           </Flex>
         </Flex>
