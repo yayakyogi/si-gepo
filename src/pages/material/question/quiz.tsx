@@ -2,6 +2,7 @@ import { Box, Button, Flex, Text, useRadioGroup } from '@chakra-ui/react';
 import ButtonBack from '@components/ui/button-back/button-back.component';
 import React, { useEffect, useState } from 'react';
 
+import ModalQuestionsResult from '@components/modal/question-result/question-result.component';
 import ModalQuestionsCopleted from '@components/modal/questions-completed/questions-completed.component';
 import RadioCard from '@components/radio-card/radio-card.component';
 import { findIndex, map, sumBy } from 'lodash-es';
@@ -20,6 +21,8 @@ const MaterialQuestionQuizPage: React.FC = () => {
   const [correctAnswer, setCorrectAnswer] = useState<number>(0);
   const [inCorrectAnswer, setInCorrectAnswer] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isShowResult, setIsShowResult] = useState<boolean>(false);
+  const [questionResult, setQuestionResult] = useState<boolean>(false);
 
   const step = questions[currentIndex];
 
@@ -37,13 +40,16 @@ const MaterialQuestionQuizPage: React.FC = () => {
     if (answer === step.correctAnswer && currentIndex <= questions.length - 1) {
       setScore((old) => old + Number(step.point));
       setCorrectAnswer((old) => old + 1);
+      setQuestionResult(true);
     } else {
       setInCorrectAnswer((old) => old + 1);
+      setQuestionResult(false);
     }
 
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setAnswer('');
+      setIsShowResult(true);
     } else {
       setIsModalOpen(true);
     }
@@ -112,6 +118,7 @@ const MaterialQuestionQuizPage: React.FC = () => {
           setScore(0);
         }}
       />
+      <ModalQuestionsResult isOpen={isShowResult} result={questionResult} onClose={() => setIsShowResult(false)} />
     </Flex>
   );
 };

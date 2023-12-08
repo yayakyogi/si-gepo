@@ -22,7 +22,7 @@ const ModalVideo: React.FC<Props> = ({ isOpen, video, title, onClose }) => {
         <ModalBody>
           <Flex justifyContent="center">
             <video controls className={style.video}>
-              <source src={video} type="video/mp4" />
+              <source src={`/video/${video}.mp4`} type="video/mp4" />
               <track src="captions_en.vtt" kind="captions" srcLang="en" label="english_captions" />
             </video>
           </Flex>

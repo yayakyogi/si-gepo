@@ -1,13 +1,13 @@
 import { Box, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react';
 import ButtonBack from '@components/ui/button-back/button-back.component';
 import Title from '@components/ui/title/title.component';
-import materialJson from '@resources/material.json';
 import { material } from '@state/atom';
 import { useAtom } from 'jotai';
 import { map } from 'lodash-es';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { materials } from '@resources/resources';
 import classNames from 'classnames';
 import style from './style.module.scss';
 
@@ -31,7 +31,7 @@ const MaterialPage: React.FC = () => {
               Materi
             </Text>
             <Grid templateColumns="repeat(3, 160px)" gap={5}>
-              {map(materialJson, (menu, idx) => {
+              {map(materials, (menu, idx) => {
                 return idx !== materiNumber ? (
                   <Box key={idx} className={classNames(style.materialLevel, style.materialInactive)}>
                     <Flex justifyContent="center" alignItems="center" h="full">

@@ -1,10 +1,11 @@
 import { Button, Flex, Spinner, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
-import { materialQuiz1, materialQuiz2 } from '@resources/questions';
+import { quiz as ListQuiz } from '@resources/resources';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import ButtonBack from '@components/ui/button-back/button-back.component';
+import { find } from 'lodash-es';
 import style from './style.module.scss';
 
 const MaterialQuestionsPage: React.FC = () => {
@@ -14,11 +15,10 @@ const MaterialQuestionsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (Number(id) === 1) {
-      setQuiz(materialQuiz1);
-      setIsLoading(false);
-    } else if (Number(id) === 2) {
-      setQuiz(materialQuiz2);
+    if (id) {
+      const getQuiz = find(ListQuiz, (val) => val.id === `materi-${id}`);
+
+      setQuiz(getQuiz);
       setIsLoading(false);
     }
   }, [id]);
@@ -43,18 +43,18 @@ const MaterialQuestionsPage: React.FC = () => {
           <Flex align="center" gap={3} mb={5}>
             <ButtonBack link={`/material/${id}`} />
             <Text color="white" fontSize={16}>
-              {quiz?.quizTitle}
+              {quiz?.title}
             </Text>
           </Flex>
           <Flex flex={1} direction="column" h="full">
             <Text flex={1} color="white">
-              {quiz?.quizSynopsis}
+              {quiz?.synopsis}
             </Text>
             <Button
               colorScheme="primary"
               mt={5}
               onClick={() =>
-                navigate('question', { state: JSON.stringify({ title: quiz?.quizTitle, questions: quiz?.questions }) })
+                navigate('question', { state: JSON.stringify({ title: quiz?.title, questions: quiz?.questions }) })
               }
             >
               SOAL

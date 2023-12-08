@@ -4,7 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import ModalVideo from '@components/modal/video/video.component';
 import ProgressBar from '@components/progress-bar/progress-bar.component';
-import materialJson from '@resources/material.json';
+import { materials } from '@resources/resources';
+import { material } from '@state/atom';
 import {
   IconChevronLeft,
   IconPlayerPlayFilled,
@@ -12,9 +13,8 @@ import {
   IconPlayerTrackPrevFilled,
   IconUserQuestion,
 } from '@tabler/icons-react';
-import { filter } from 'lodash-es';
 import { useAtomValue } from 'jotai';
-import { material } from '@state/atom';
+import { find } from 'lodash-es';
 
 import style from './style.module.scss';
 
@@ -30,16 +30,14 @@ const MaterialDetailPage: React.FC = () => {
 
   useEffect(() => {
     if (id) {
-      const materi = filter(materialJson, (val) => {
-        return val.id.toString() === id;
-      });
+      const materi = find(materials, (val) => val.id.toString() === id);
 
-      setMaterialObj(materi[0]);
+      setMaterialObj(materi);
     }
   }, []);
 
   const renderStep = () => {
-    const step = materialObj?.material?.subMaterial[currentIndex];
+    const step = materialObj?.materi?.subMaterial[currentIndex];
 
     return step ? (
       <Box overflow="scroll" py={2} px={6}>
@@ -63,9 +61,9 @@ const MaterialDetailPage: React.FC = () => {
                 <IconChevronLeft color="white" size={24} />
               </IconButton>
 
-              <Text className={style.title}>{materialObj?.material?.title}</Text>
+              <Text className={style.title}>{materialObj?.title}</Text>
             </Flex>
-            <ProgressBar currentValue={currentIndex + 1} maxValue={materialObj?.material?.subMaterial.length} />
+            <ProgressBar currentValue={currentIndex + 1} maxValue={materialObj?.materi?.subMaterial.length} />
           </Box>
           <Flex flex={1}>
             {renderStep()}
@@ -95,7 +93,7 @@ const MaterialDetailPage: React.FC = () => {
                 size="sm"
                 bgColor="#1ABC9C"
                 color="white"
-                isDisabled={currentIndex !== (materialObj?.material?.subMaterial.length || 0) - 1 || materi === Number(id)}
+                isDisabled={currentIndex !== (materialObj?.materi?.subMaterial.length || 0) - 1 || materi === Number(id)}
                 leftIcon={<IconUserQuestion size="20" />}
                 onClick={() => navigate(`/material/${id}/quiz`)}
               >
@@ -104,7 +102,7 @@ const MaterialDetailPage: React.FC = () => {
             </Flex>
             <Button
               size="sm"
-              isDisabled={(materialObj?.material?.subMaterial.length || 0) - 1 === currentIndex}
+              isDisabled={(materialObj?.materi?.subMaterial.length || 0) - 1 === currentIndex}
               onClick={() => setCurrentIndex(currentIndex + 1)}
             >
               <IconPlayerTrackNextFilled size="20" />
@@ -115,8 +113,8 @@ const MaterialDetailPage: React.FC = () => {
 
       <ModalVideo
         isOpen={isModalVideoOpen}
-        title={materialObj?.material?.title}
-        video={materialObj?.material?.video}
+        title={materialObj?.title}
+        video={materialObj?.materi?.video}
         onClose={() => setIsModalVideoOpen(false)}
       />
     </>

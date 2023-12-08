@@ -9,7 +9,7 @@ const App: React.FC = () => {
   const element = useRoutes(routes);
 
   useEffect(() => {
-    // audio.play();
+    audio.play();
 
     return () => {
       audio.removeEventListener('ended', () => {});
